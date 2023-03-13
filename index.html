@@ -8,6 +8,20 @@
     <title>Weather App</title>
   </head>
   <body>
+    <header class="navbar">
+      <div class="location-container">
+        <form>
+          <label for="location" class="location-label">Location:</label>
+          <input type="text" id="location" class="location-input" />
+          <button type="button" class="location-submit">Submit</button>
+        </form>
+      </div>
+      <div class="logo">
+        <img src="/src/images/logo.svg" alt="logo" class="logo-img" />
+      </div>
+    </header>
+    <section class="weather-container"></section>
+    <footer class="weather-footer"></footer>
     <script src="/src/scripts/index.js" defer></script>
   </body>
 </html>
