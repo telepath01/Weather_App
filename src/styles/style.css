@@ -1,4 +1,7 @@
 * {
+  --mainColor: rgb(109, 158, 250);
+  --secondColor: beige;
+  --thirdColor: rgb(63, 62, 62);
   padding: 0;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -17,7 +20,7 @@ body {
   position: relative;
   height: 10%;
   width: 100%;
-  background-color: rgb(109, 158, 250);
+  background-color: var(--mainColor);
 }
 .logo {
   position: absolute;
@@ -34,14 +37,137 @@ body {
 
 /* main content */
 .weather-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   height: 80%;
   width: 100%;
-  background-color: beige;
+  background-color: var(--secondColor);
+}
+
+.location-headder {
+  height: 10%;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.weather-cards {
+  height: 90%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'mainTemp mainTemp'
+    'minTemp maxTemp'
+    'humidity pressure';
+}
+
+.main-temp {
+  grid-area: mainTemp;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 30% 1fr;
+  grid-template-areas:
+    'mainHeading mainHeading'
+    'wind mainValue';
+  height: 90%;
+  width: 90%;
+  margin: 0 auto;
+  background-color: var(--mainColor);
+  border-radius: 1rem;
+}
+.main-temp .heading {
+  grid-area: mainHeading;
+}
+.wind {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  font-weight: bold;
+}
+
+.speed {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.direction {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.main-value {
+  align-self: center;
+  font-size: 3rem;
+}
+
+.min-temp {
+  grid-area: minTemp;
+
+  display: grid;
+  grid-template-rows: 30% 1fr;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+  margin: 0 auto;
+  background-color: var(--mainColor);
+
+  border-radius: 1rem;
+}
+.max-temp {
+  grid-area: maxTemp;
+
+  display: grid;
+  grid-template-rows: 30% 1fr;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+  margin: 0 auto;
+  background-color: var(--mainColor);
+
+  border-radius: 1rem;
+}
+.humidity {
+  grid-area: humidity;
+
+  display: grid;
+  grid-template-rows: 30% 1fr;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+  margin: 0 auto;
+  background-color: var(--mainColor);
+
+  border-radius: 1rem;
+}
+.pressure {
+  grid-area: pressure;
+
+  display: grid;
+  grid-template-rows: 30% 1fr;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+  margin: 0 auto;
+  background-color: var(--mainColor);
+
+  border-radius: 1rem;
+}
+.max-value,
+.min-value,
+.humidity-value,
+.pressure-value {
+  height: 2rem;
+  font-size: 3rem;
+}
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 /* footer */
 .weather-footer {
   height: 10%;
   width: 100%;
-  background-color: rgb(63, 62, 62);
+  background-color: var(--thirdColor);
 }
