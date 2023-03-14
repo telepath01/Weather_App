@@ -10,6 +10,7 @@ const pressureValue = document.querySelector('.pressure-value');
 const locationValue = document.querySelector('.location-heading');
 const arrowImg = document.querySelector('.arrow-img');
 const cardTransition = document.querySelector('.weather-cards');
+const sliderBall = document.querySelector('.ball');
 
 locationSubmitBtn.addEventListener('click', (event) => {
   weatherLookUp();
@@ -36,6 +37,7 @@ async function weatherLookUp() {
         response.wind.deg
       );
       appTransitions();
+      sliderActivation();
     });
 }
 
@@ -72,4 +74,13 @@ function mainValueData(
   pressureValue.textContent = `${pressureVal} hPa`;
   locationValue.textContent = locationVal;
   arrowImg.style.transform = `rotate(${directionVal}deg)`;
+}
+function sliderActivation() {
+  sliderBall.addEventListener('click', (event) => {
+    if (sliderBall.style.transform === '') {
+      sliderBall.style.transform = 'translateX(30px)';
+    } else if (sliderBall.style.transform === 'translateX(30px)') {
+      sliderBall.style.transform = '';
+    }
+  });
 }
