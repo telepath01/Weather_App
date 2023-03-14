@@ -52,6 +52,8 @@ body {
   margin-bottom: 10px;
 }
 .weather-cards {
+  opacity: 0;
+  transform: translateY(-20px);
   height: 90%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -60,6 +62,7 @@ body {
     'mainTemp mainTemp'
     'minTemp maxTemp'
     'humidity pressure';
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
 .main-temp {
@@ -76,6 +79,7 @@ body {
   margin: 0 auto;
   background-color: var(--mainColor);
   border-radius: 1rem;
+  box-shadow: 3px 5px 4px black;
 }
 .main-temp .heading {
   grid-area: mainHeading;
@@ -99,6 +103,7 @@ body {
 .main-value {
   align-self: center;
   font-size: 3rem;
+  font-weight: bold;
 }
 
 .min-temp {
@@ -113,6 +118,7 @@ body {
   background-color: var(--mainColor);
 
   border-radius: 1rem;
+  box-shadow: 3px 5px 4px black;
 }
 .max-temp {
   grid-area: maxTemp;
@@ -126,6 +132,7 @@ body {
   background-color: var(--mainColor);
 
   border-radius: 1rem;
+  box-shadow: 3px 5px 4px black;
 }
 .humidity {
   grid-area: humidity;
@@ -139,6 +146,7 @@ body {
   background-color: var(--mainColor);
 
   border-radius: 1rem;
+  box-shadow: 3px 5px 4px black;
 }
 .pressure {
   grid-area: pressure;
@@ -152,17 +160,20 @@ body {
   background-color: var(--mainColor);
 
   border-radius: 1rem;
+  box-shadow: 3px 5px 4px black;
 }
 .max-value,
 .min-value,
-.humidity-value,
-.pressure-value {
+.humidity-value {
   height: 2rem;
   font-size: 3rem;
 }
 .heading {
   font-size: 1.5rem;
   font-weight: bold;
+}
+.arrow-img {
+  height: 20px;
 }
 
 /* footer */
