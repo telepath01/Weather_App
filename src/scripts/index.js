@@ -12,6 +12,8 @@ const arrowImg = document.querySelector('.arrow-img');
 const cardTransition = document.querySelector('.weather-cards');
 const sliderBall = document.querySelector('.ball');
 
+const tempValue = 'f';
+
 locationSubmitBtn.addEventListener('click', (event) => {
   weatherLookUp();
 });
@@ -37,8 +39,22 @@ async function weatherLookUp() {
         response.wind.deg
       );
       appTransitions();
-      sliderActivation();
+      sliderActivation(
+        ferenhitConverter(response.main.temp),
+        ferenhitConverter(response.main.temp_min),
+        ferenhitConverter(response.main.temp_max),
+        windSpeedConverter(response.wind.speed),
+        response.main.humidity,
+        response.main.pressure,
+        locations.value,
+        response.wind.deg
+      );
     });
+}
+function celciusConverter(tempature) {
+  const converter = ((tempature - 32) * 5) / 9;
+  let celciusValue = converter.toFixed(2);
+  return celciusValue;
 }
 
 function ferenhitConverter(kelvin) {
@@ -67,19 +83,45 @@ function mainValueData(
   directionVal
 ) {
   mainValue.textContent = `${mainTemp}°`;
-  speedValue.textContent = `${speedVal} mph`;
   minValue.textContent = `${minTemp}°`;
   maxValue.textContent = `${maxTemp}°`;
   humidityValue.textContent = `${humidityVal}%`;
   pressureValue.textContent = `${pressureVal} hPa`;
   locationValue.textContent = locationVal;
   arrowImg.style.transform = `rotate(${directionVal}deg)`;
+  speedValue.textContent = `${speedVal} mph`;
 }
-function sliderActivation() {
+function sliderActivation(
+  maintempature,
+  minTemprature,
+  maxTemprature,
+  speedVal,
+  humidityVal,
+  locationVal,
+  directionVal
+) {
   sliderBall.addEventListener('click', (event) => {
     if (sliderBall.style.transform === '') {
+      mainValueData(
+        celciusConverter(maintempature),
+        speedVal,
+        celciusConverter(minTemprature),
+        celciusConverter(maxTemprature),
+        humidityVal,
+        locationVal,
+        directionVal
+      );
       sliderBall.style.transform = 'translateX(30px)';
     } else if (sliderBall.style.transform === 'translateX(30px)') {
+      mainValueData(
+        maintempature,
+        speedVal,
+        minTemprature,
+        maxTemprature,
+        humidityVal,
+        locationVal,
+        directionVal
+      );
       sliderBall.style.transform = '';
     }
   });
