@@ -11,11 +11,15 @@ const locationValue = document.querySelector('.location-heading');
 const arrowImg = document.querySelector('.arrow-img');
 const cardTransition = document.querySelector('.weather-cards');
 const sliderBall = document.querySelector('.ball');
+const riddleTitle = document.querySelector('.riddle-title');
+const riddleQuestion = document.querySelector('.riddle-question');
+const riddleAnswer = document.querySelector('.riddle-answer');
 
 const tempValue = 'f';
 
 locationSubmitBtn.addEventListener('click', (event) => {
   weatherLookUp();
+  quoatLookUp();
 });
 
 async function weatherLookUp() {
@@ -51,6 +55,20 @@ async function weatherLookUp() {
       );
     });
 }
+
+async function quoatLookUp() {
+  fetch('https://api.api-ninjas.com/v1/riddles', {
+    mode: 'cors',
+  })
+    .then(function (respons) {
+      return respons.json();
+    })
+    .then(function (respons) {
+      console.log(respons);
+      riddleDisplay(respons[0].title, respons[0].question, respons[0].answer);
+    });
+}
+
 function celciusConverter(tempature) {
   const converter = ((tempature - 32) * 5) / 9;
   let celciusValue = converter.toFixed(2);
@@ -125,4 +143,9 @@ function sliderActivation(
       sliderBall.style.transform = '';
     }
   });
+}
+function riddleDisplay(title, question, answer) {
+  riddleTitle.textContent = title;
+  riddleQuestion.textContent = question;
+  riddleAnswer.textContent = answer;
 }
