@@ -162,6 +162,10 @@ body {
   border-radius: 1rem;
   box-shadow: 3px 5px 4px black;
 }
+
+.quoat {
+  display: none;
+}
 .max-value,
 .min-value,
 .humidity-value {
@@ -232,5 +236,104 @@ body {
   }
   .pressure-value {
     font-size: 3rem;
+  }
+}
+
+/* Media Laptop 1024px */
+@media screen and (min-width: 1024px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    position: relative;
+    height: 15%;
+  }
+  .location-container {
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .location-input {
+    font-size: 1.5rem;
+  }
+  .location-submit {
+    border: none;
+    border-radius: 1rem;
+    font-weight: bold;
+    padding: 0 7px 0 7px;
+    font-size: 1.3rem;
+  }
+
+  .logo {
+    position: absolute;
+    top: 5px;
+    left: 25%;
+  }
+  .logo-img {
+    height: 20rem;
+  }
+
+  .weather-cards {
+    opacity: 0;
+    transform: translateY(-20px);
+
+    height: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+      'mainTemp quoat'
+      'minTemp quoat'
+      'maxTemp quoat'
+      'pressure quoat'
+      'humidity quoat';
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  }
+
+  .main-temp {
+    margin: 0;
+    width: 80%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .min-temp {
+    margin: 0;
+    width: 80%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .max-temp {
+    margin: 0;
+    width: 80%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .humidity {
+    margin: 0;
+    width: 80%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .pressure {
+    margin: 0;
+    width: 80%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .quoat {
+    background-color: var(--mainColor);
+    padding: 10px;
+    height: 95%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    grid-area: quoat;
+    gap: 1rem;
+  }
+  .heading-quoat {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
   }
 }
